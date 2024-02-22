@@ -1,6 +1,6 @@
 ### Create the environment
 
-> pipenv install 
+> pipenv install django
 
 > pipenv shell
 
