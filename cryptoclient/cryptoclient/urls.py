@@ -23,5 +23,7 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),  # new
     path("accounts/", include("accounts.urls")),  # new
     path("", TemplateView.as_view(template_name="home.html"), name="home"),  # new
+    path('', include('chat.urls', namespace='chat')),
+    
     
 ]

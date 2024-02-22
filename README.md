@@ -1,9 +1,13 @@
 ### Create the environment
 
-> pipenv install django
+> pipenv install 
+
 > pipenv shell
+
 > django-admin startproject cryptoclient
+
 > python manage.py migrate
+
 > python manage.py runserver
 
 ### Create the login
@@ -13,4 +17,9 @@
 3. Specify where to redirect the user upon a successful login using the LOGIN_REDIRECT_URL setting.
 4. Run  python manage.py runserver
 5. http://127.0.0.1:8000/accounts/login/
-6. 
+
+
+### Create a ASGI sevver to chat 
+
+1. Install django channels
+> pip install channels
