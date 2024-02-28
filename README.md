@@ -1,3 +1,5 @@
+## Django based front end created to communicate with the flask server for crypto mining game
+
 ### Create the environment
 
 > pipenv install django
