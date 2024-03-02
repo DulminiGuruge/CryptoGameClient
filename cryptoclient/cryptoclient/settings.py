@@ -100,6 +100,7 @@ DATABASES = {
             "NAME": BASE_DIR / "db.sqlite3",
         },
     }
+
 }
 
 
@@ -159,6 +160,7 @@ LOGOUT_REDIRECT_URL = "home"
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",  # Add the URLs of your frontend applications
     "http://127.0.0.1:8000",
+    "https://bitcoinserver-uwxb3ljwsa-uc.a.run.app",
     # Add more origins as needed
 ]
 

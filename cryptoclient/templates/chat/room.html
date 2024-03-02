@@ -18,8 +18,14 @@
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><a class="nav-link active" href="projects.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="login.html"><strong>Log in</strong></a></li>
-                </ul><a class="btn btn-primary shadow-sm" role="button" href="signup.html" style="background: #f1d541;"><span style="color: rgb(14, 14, 14);">Sign up</span></a>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" ><strong>{{ user.username }}</strong></a></li>
+                    {% endif %}
+                </ul>
+             
+                <a class="btn btn-primary shadow-sm" role="button" href="accounts/login/" style="background: #f1d541;"><span style="color: rgb(14, 14, 14);">Log Out</span></a>
+        
+   
             </div>
         </div>
     </nav>
@@ -212,7 +218,7 @@
             var previous_hash = $('#previous_hash').val();
             
 
-            var api_url = 'http://127.0.0.1:7655/startmining';  // Replace with your API endpoint
+            var api_url = 'https://bitcoinserver-uwxb3ljwsa-uc.a.run.app/startmining';  // Replace with your API endpoint
             var payload = {
                 'group_id': group_id,
                 'transactions': transactions,
