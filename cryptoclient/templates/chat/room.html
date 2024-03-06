@@ -96,12 +96,41 @@
                                 <div class="tab-pane" role="tabpanel" id="tab-2">
                                     <div>
                                         <div class="row">
-                                            <div class="col"><label class="col-form-label">Transactions</label></div>
-                                            <div class="col-lg-8 offset-lg-0"><input type="text"></div>
+                                            <div class="col" style="padding: 5;"><label class="col-form-label">Transaction list</label></div>
+                                            <div class="col-lg-8 col-xl-8 offset-lg-0"><input type="text" id="vtransaction_list"></div>
                                         </div>
                                         <div class="row">
-                                            <div class="col offset-lg-6"><button class="btn btn-primary" type="button">Next</button></div>
+                                            <div class="col"><label class="col-form-label">Block No</label></div>
+                                            <div class="col-lg-8 offset-lg-0"><input type="text" id="vblock_no"></div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col"><label class="col-form-label">Previous hash</label></div>
+                                            <div class="col-lg-8 offset-lg-0"><input type="text" id="vprev_hash"></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col"><label class="col-form-label">Nonce</label></div>
+                                            <div class="col-lg-8 offset-lg-0"><input type="text" id="vnonce"></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-4"><label class="col-form-label">New Hash</label></div>
+                                            <div class="col-lg-8 offset-lg-0"><input type="text" id="vnew_hash"></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-4"><label class="col-form-label">Difficulity</label></div>
+                                            <div class="col-lg-8 offset-lg-0"><input type="text" id="vdifficulity"></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col offset-lg-6 offset-xl-4"><button class="btn btn-primary link-primary bg-dark-subtle" type="button" style="border-radius: 16px;padding-top: 9px;margin-top: 14px;border: 2px solid #f1d541 ;" onclick="blockValidator()">Validate</button></div>
+                                        </div>
+
+
+                                        <div class="row" style="padding: 6px;">
+                                            <div class="col"><label class="col-form-label"><strong><span style="color: rgb(241, 213, 65);">Validation Results</span></strong></label></div>
+                                        </div>
+                                        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-1 row-cols-xl-1 row-cols-xxl-1">
+                                            <div class="col-xl-11"><textarea class="border-2 border-primary-subtle shadow-sm form-control-lg" readonly="" style="background: #dcdce3;margin-bottom: -28px;padding-bottom: 0px;text-align: left;font-size: 12px;width: 400px;height: 300px;" cols="26" rows="4" id="validationResults"></textarea></div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -275,6 +304,67 @@
             
         }
     </script>
+
+<script>
+    function blockValidator() {
+        var vtransaction_list = $('#vtransaction_list').val();
+        var vblock_no = $('#vblock_no').val();
+        var vprev_hash = $('#vprev_hash').val();
+        var vnonce = $('#vnonce').val();
+        var vnew_hash = $('#vnew_hash').val();
+        var vdifficulity = $('#vdifficulity').val();
+        
+        
+
+        var apivalidate_url = 'http://127.0.0.1:7655/validateblocks';  // Replace with your API endpoint
+        var validation_data = {
+            'vtransaction_list': vtransaction_list,
+            'vblock_no': vblock_no,
+            'vprev_hash': vprev_hash,
+            'vnonce': vnonce,
+            'vnew_hash': vnew_hash,
+            'vdifficulity': vdifficulity,
+        };
+        console.log(validation_data)
+
+        $.ajax({
+            type: 'POST',
+            url: apivalidate_url,
+            data: validation_data,
+            success: function(response) {
+                // Update the textarea with the formatted result
+                
+                displayValidationResults(response);
+            },
+            error: function(error) {
+                console.error(error);
+            }
+        });
+    }
+    function displayValidationResults(validationResult) {
+        // Format the result for display
+        var formattedResult = 
+        "===============================\n"+
+        "       --- Validation Result --- \n" + 
+        validationResult["block_result"] + "\n" +
+        validationResult["hash_result"] + "\n" +
+         "=============================== \n\n";
+
+        //for (var key in apiResult) {
+        //    formattedResult += key + ": " + apiResult[key] + "\n"; }
+
+    // Get the current content of the textarea
+    //var currentContent = $('#miningResults').val();
+
+    // Append the new results to the existing content
+    //var updatedContent = currentContent + formattedResult;
+    console.log(validationResult)
+
+    // Update the textarea with the updated content
+    $('#validationResults').val(formattedResult);
+        
+    }
+</script>
     
    
    
