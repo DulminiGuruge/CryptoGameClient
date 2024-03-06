@@ -28,3 +28,12 @@
 > pip install channels
 
 > pip install Daphne
+
+
+### How to connect to google cloud PostgreSQL from the local django framework app for testing
+
+Visit below links
+
+1. https://stackoverflow.com/questions/50132394/how-do-you-connect-to-google-cloud-postgresql-via-django-framework
+
+2. https://cloud.google.com/sql/docs/postgres/configure-ssl-instance
