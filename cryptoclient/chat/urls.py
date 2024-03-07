@@ -5,7 +5,7 @@ from . import views
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("<str:room_name>/", views.room, name="room"),
+    path("mining/", views.room, name="room"),
 ]
 
 """ from django.urls import path

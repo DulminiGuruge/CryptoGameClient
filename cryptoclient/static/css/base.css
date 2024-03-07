@@ -1,0 +1,10 @@
+input{
+    margin-bottom: 0.75rem;
+    border-radius: 10px; /* Adjust the radius as needed */
+    border: 2px solid #f1d541; /* Add your desired border color */
+    padding: 8px; /* Adjust padding as needed */
+    margin: 5px; /* Adjust margin as needed */
+}
+form div{
+    margin: 25px;
+}
