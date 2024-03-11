@@ -5,6 +5,11 @@ name = "pypi"
 
 [packages]
 django = "*"
+uwsgi = "*"
+pysocks = "*"
+psycopg = "*"
+psycopg2-binary = "*"
+selenium = "*"
 
 [dev-packages]
 

@@ -196,10 +196,10 @@
     {{ user.username|json_script:"user_username" }}
     {{ room_name|json_script:"room-name" }}
     <script>
-       // const roomName = JSON.parse(document.getElementById('room-name').textContent);
+        //const roomName = JSON.parse(document.getElementById('room-name').textContent);
 
         const chatSocket = new WebSocket(
-            'ws://'
+            'wss://'
             + window.location.host
             + '/ws/chat/'
             + 'mining'
@@ -354,7 +354,7 @@
         document.getElementById('Btn_validate').disabled = true;
         
 
-        var apivalidate_url = 'http://127.0.0.1:7655/validateblocks';  // Replace with your API endpoint
+        var apivalidate_url = 'https://bitcoinserver-uwxb3ljwsa-uc.a.run.app/validateblocks';  // Replace with your API endpoint
         var validation_data = {
             'vtransaction_list': vtransaction_list,
             'vblock_no': vblock_no,
