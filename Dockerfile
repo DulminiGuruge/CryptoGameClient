@@ -1,16 +1,17 @@
-# Use an official Python runtime as a parent image
-FROM python:3.11-slim
 
-ADD . /app
-# Set the working directory to /app
-WORKDIR /app
+# Pull official base Python Docker image
+FROM python:3.10.6
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+# Set work directory
+WORKDIR /code
+# Install dependencies
+RUN pip install --upgrade pip
+#new
 
-# install requirements
-RUN pip3 install -r requirements.txt
+COPY requirements.txt /code/
 
-# running port
-EXPOSE 7655
-
-
-# Run the command when the container starts
-CMD ["python3",  "manage.py", "runserver", "0.0.0.0:8000"]
+RUN pip install -r requirements.txt
+# Copy the Django project
+COPY . /code/

@@ -1,0 +1,40 @@
+# upstream for uWSGI
+upstream uwsgi_app {
+    server unix:/code/cryptoclient/uwsgi_app.sock;
+}
+# upstream for Daphne
+upstream daphne {
+    server unix:/code/cryptoclient/daphne.sock;
+}
+server{
+    listen       81;
+    server_name  127.0.0.1 bitcoinlearngame.com www.bitcoinlearngame.com;
+    return 301 https://$host$request_uri;
+}
+server {
+    
+    listen               443 ssl;
+    ssl_certificate      /code/cryptoclient/ssl/cryptoclient.crt;
+    ssl_certificate_key  /code/cryptoclient/ssl/cryptoclient.key;
+    server_name  bitcoinlearngame.com www.bitcoinlearngame.com;
+    error_log    stderr warn;
+    access_log   /dev/stdout main;
+    location / {
+        include      /etc/nginx/uwsgi_params;
+        uwsgi_pass   uwsgi_app;
+    }
+    location /ws/ {
+        proxy_http_version  1.1;
+        proxy_set_header    Upgrade $http_upgrade;
+        proxy_set_header    Connection "upgrade";
+        proxy_redirect      off;
+        proxy_pass          http://daphne;
+    }
+    location /static/ {
+        alias /code/cryptoclient/static/;
+    }
+    location /media/ {
+        alias /code/cryptoclient/media/;
+    }
+  
+}
