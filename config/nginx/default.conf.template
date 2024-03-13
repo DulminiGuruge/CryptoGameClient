@@ -8,7 +8,7 @@ upstream daphne {
 }
 server{
     listen       81;
-    server_name  127.0.0.1 bitcoinlearngame.com www.bitcoinlearngame.com;
+    server_name  bitcoinlearngame.com www.bitcoinlearngame.com;
     return 301 https://$host$request_uri;
 }
 server {
