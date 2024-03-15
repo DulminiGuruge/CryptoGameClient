@@ -112,15 +112,11 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
 #         # Send message to WebSocket
 #         self.send(text_data=json.dumps({"message": message}))
-
-
-
 # chat/consumers.py
 import json
 
 from channels.generic.websocket import AsyncWebsocketConsumer
-from channels.db import database_sync_to_async
-#from .models import ChatMessages  # new import
+
 
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
@@ -148,20 +144,11 @@ class ChatConsumer(AsyncWebsocketConsumer):
             self.room_group_name, {"type": "chat.message",'user': self.user.username, "message": message}
         )
 
-        # Save message to the database using database_sync_to_async
-        #await self.save_to_database(self.user, message)
-
-           # Save message to the database
-        #ChatMessages.objects.create(sender=self.user, content=message)  # new
-      
-   # @database_sync_to_async
-   # def save_to_database(self, user, message):
-        # Save message to the database
-       # ChatMessages.objects.create(sender=user, content=message)
-
     # Receive message from room group
     async def chat_message(self, event):
         message = event["message"]
 
         # Send message to WebSocket
         await self.send(text_data=json.dumps({"message": message}))
+
+
