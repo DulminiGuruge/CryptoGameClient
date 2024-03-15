@@ -94,15 +94,21 @@ CHANNEL_LAYERS = {
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-         "TEST": {
-            "NAME": BASE_DIR / "db.sqlite3",
-        },
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'bitcoingame',
+        'USER': 'bitcoindatabaseuser',
+        'PASSWORD': 'F.5Z+cS(u]d<0Rd3',
+        # https://console.cloud.google.com/sql/instances
+        'HOST': '34.152.31.66',
+        'PORT': '5432', #at the moment of this writing google cloud postgresql is using the default postgresql port 5432
+        'OPTIONS': {
+            'sslmode': 'verify-ca', #leave this line intact
+            'sslrootcert': '/Users/dulminiguruge/Documents/myprojects/certificates/server-ca.pem',
+            "sslcert": "/Users/dulminiguruge/Documents/myprojects/certificates/client-cert.pem",
+            "sslkey": "/Users/dulminiguruge/Documents/myprojects/certificates/client-key.pem",
+    },
 
-     
     
-        
  
     }
 }
@@ -166,6 +172,7 @@ LOGOUT_URL = 'logout'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",  # Add the URLs of your frontend applications
     "http://127.0.0.1:8000",
+    "https://bitcoinserver-uwxb3ljwsa-uc.a.run.app",
     
     # Add more origins as needed
 ]

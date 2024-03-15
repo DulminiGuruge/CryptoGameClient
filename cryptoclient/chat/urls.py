@@ -5,6 +5,7 @@ from . import views
 
 urlpatterns = [
     path("", views.index, name="index"),
+    
     path("mining/", views.room, name="room"),
 ]
 

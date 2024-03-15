@@ -12,6 +12,3 @@ def index(request):
 @login_required
 def room(request):
     return render(request, "chat/room.html")
-
-
-    
