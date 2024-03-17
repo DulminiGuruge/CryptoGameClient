@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -23,9 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-)=&5$*j92f%qf7@wx*jms5t6v^&21n=dt)j%c$0vjf7d-fokwx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
+
 
 
 # Application definition
@@ -89,29 +88,7 @@ CHANNEL_LAYERS = {
 
 
 
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'bitcoingame',
-        'USER': 'bitcoindatabaseuser',
-        'PASSWORD': 'F.5Z+cS(u]d<0Rd3',
-        # https://console.cloud.google.com/sql/instances
-        'HOST': '34.152.31.66',
-        'PORT': '5432', #at the moment of this writing google cloud postgresql is using the default postgresql port 5432
-        'OPTIONS': {
-            'sslmode': 'verify-ca', #leave this line intact
-            'sslrootcert': '/Users/dulminiguruge/Documents/myprojects/certificates/server-ca.pem',
-            "sslcert": "/Users/dulminiguruge/Documents/myprojects/certificates/client-cert.pem",
-            "sslkey": "/Users/dulminiguruge/Documents/myprojects/certificates/client-key.pem",
-    },
-
-    
- 
-    }
-}
 
 
 # Password validation
@@ -150,9 +127,10 @@ USE_TZ = True
 
 
 STATIC_URL = "static/"
-STATICFILES_DIRS = [
-    BASE_DIR / "static"
-]
+# STATICFILES_DIRS = [
+#     BASE_DIR / "static"
+# ]
+STATIC_ROOT = BASE_DIR / 'static'
 
 
 # Default primary key field type
