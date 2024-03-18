@@ -11,7 +11,9 @@ services:
     volumes:
       - .:/code
     environment:
-      - DJANGO_SETTINGS_MODULE=cryptoclient.settings.prod     
+      - DJANGO_SETTINGS_MODULE=cryptoclient.settings.prod
+    depends_on:
+      - cache       
   nginx:
     image: nginx:1.23.1
     restart: always
@@ -30,6 +32,8 @@ services:
       - .:/code
     environment:
       - DJANGO_SETTINGS_MODULE=cryptoclient.settings.prod
+    depends_on:
+      - cache        
      
 
                 
