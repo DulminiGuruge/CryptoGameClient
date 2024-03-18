@@ -5,7 +5,26 @@ services:
     restart: always
     volumes:
       - .:/code
-    ports:
-      - "8000:8000"
     environment:
       - DJANGO_SETTINGS_MODULE=cryptoclient.settings.prod     
+  nginx:
+    image: nginx:1.23.1
+    restart: always
+    volumes:
+      - ./config/nginx:/etc/nginx/templates
+      - .:/code
+    ports:
+      - "81:81"
+  daphne:
+    build: .
+    working_dir: /code/cryptoclient/
+    command: ["daphne", "-u", "/code/cryptoclient/daphne.sock",
+              "cryptoclient.asgi:application"] 
+    restart: always
+    volumes:
+      - .:/code
+    environment:
+      - DJANGO_SETTINGS_MODULE=cryptoclient.settings.prod
+     
+
+                

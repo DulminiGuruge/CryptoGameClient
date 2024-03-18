@@ -2,7 +2,7 @@ from .base import *
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-DEBUG = False
+DEBUG = True
 ADMINS = [
     ('Dulmini', 'dulminiguruge@gmail.com'),
 ]
@@ -28,3 +28,7 @@ DATABASES = {
  
     }
 }
+
+REDIS_URL = 'redis://cache:6379'
+CACHES['default']['LOCATION'] = REDIS_URL
+CHANNEL_LAYERS['default']['CONFIG']['hosts'] = [REDIS_URL]
