@@ -64,6 +64,9 @@ Run the following management command in another shell, from the project director
 
 
 ### How to run in production mode 
+
 >docker compose build
+
 >docker compose up
+
 > docker compose exec web python /code/cryptoclient/manage.py collectstatic
