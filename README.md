@@ -1,5 +1,7 @@
 ## Crypto Mining Game 
-This repository was developed as a teaching resource for third-year Economics students at the **University of Saskatchewan**, enrolled in the "Money, Banking, and Financial Markets" course, **in collaboration with Danusha Rajapaksa**. It covers essential topics in cryptocurrency, including the Proof of Work protocol and the double-spending problem encountered in mining processes, such as those in Bitcoin.
+This repository was developed as a teaching resource for third-year Economics students at the **University of Saskatchewan**, enrolled in the "Money, Banking, and Financial Markets" course, **in collaboration with Danusha Rajapaksa**. 
+
+It covers essential topics in cryptocurrency, including the Proof of Work protocol and the double-spending problem encountered in mining processes, such as those in Bitcoin.
 
 The repository contains a game program designed for groups of students, allowing them to engage interactively with concepts like blockchain consensus and mining competition. Through gameplay, students gain hands-on experience with cryptocurrency mechanics and learn about the challenges and strategies involved in securing decentralized networks.
 
