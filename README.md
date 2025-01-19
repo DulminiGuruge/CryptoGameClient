@@ -1,4 +1,4 @@
-## Crypto Mining Game - Danusha Rajapaksa & Dulmini Guruge
+## Crypto Mining Game - by Danusha Rajapaksa & Dulmini Guruge
 This repository was developed as a teaching resource for third-year Economics students at the **University of Saskatchewan**, enrolled in the "Money, Banking, and Financial Markets" course, **in collaboration with Danusha Rajapaksa**. 
 
 It covers essential topics in cryptocurrency, including the Proof of Work protocol and the double-spending problem encountered in mining processes, such as those in Bitcoin.
