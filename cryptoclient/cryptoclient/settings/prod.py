@@ -7,8 +7,8 @@ DEBUG = False
 ADMINS = [
     ('Dulmini Guruge', 'dulminiguruge@gmail.com'),
 ]
-#ALLOWED_HOSTS = ['*'] #allow all hosts 
-ALLOWED_HOSTS = ['bitcoinlearngame.com', 'www.bitcoinlearngame.com']
+ALLOWED_HOSTS = ['*'] #allow all hosts 
+#ALLOWED_HOSTS = ['bitcoinlearngame.com', 'www.bitcoinlearngame.com']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
